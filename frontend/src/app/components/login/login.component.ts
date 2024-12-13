@@ -46,10 +46,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response:AuthResponse) => {
-          console.log(response);
-
           localStorage.setItem('token', response.token);
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => console.error('Login failed', error),
       });
