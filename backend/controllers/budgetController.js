@@ -15,10 +15,11 @@ exports.createBudget = async (req, res) => {
 };
 
 exports.getBudget = async (req, res) => {
-  const userId = req.userId | "5c8a1dfa2f8fb814b56fa18";
+  // const userId = req.userId ;
 
   try {
-    const budget = await Budget.findOne({ userId });
+    // const budget = await Budget.findOne({ userId });
+    const budget = await Budget.find();
     if (!budget) {
       return res.status(404).json({ message: "Budget not found" });
     }

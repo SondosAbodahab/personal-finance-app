@@ -1,1 +1,37 @@
-<p>budgets works!</p>
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+  <div class="budget-container">
+    <h2>{{ currentBudget ? "Your Current Budget" : "Add Your Budget" }}</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput formControlName="amount" type="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input
+        matInput
+        formControlName="startDate"
+        [matDatepicker]="startPicker"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>End Date</mat-label>
+      <input matInput formControlName="endDate" [matDatepicker]="endPicker" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit">
+      {{ currentBudget ? "Update Budget" : "Create Budget" }}
+    </button>
+  </div>
+</form>
