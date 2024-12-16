@@ -1,27 +1,26 @@
-h2{
-    text-align: center;
+h2 {
+  text-align: center;
 }
-.add-transaction{
-    display: flex;
-    flex-direction: column;
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+.add-transaction {
+  width: 50%;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
-.box > mat-form-field{
-    width: 30%;
+.box > mat-form-field {
+  width: 100%;
 }
-.single-box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.box:last-of-type {
+  grid-column: span 2;
 }
-mat-form-field:last-of-type{
-    width: 60%;
-}
-button{
-    width: 60%;
+button {
+  grid-column: span 2;
 }

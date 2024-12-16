@@ -52,7 +52,6 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          console.log(response);
           this.router.navigate(['/dashboard']);
         },
         error: (error) => console.error("Login failed", error),

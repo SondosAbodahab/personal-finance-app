@@ -23,9 +23,7 @@ export class DashboardComponent {
   loadTransactions(): void {
     this.transactionService.getAllTransactions().subscribe({
       next: (data) => {
-        this.transactions = data;
-        console.log(data);
-        
+        this.transactions = data;  
       },
       error :  (error) => {
         console.error('Error loading transactions:', error);
