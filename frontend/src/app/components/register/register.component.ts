@@ -11,7 +11,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { Router } from "@angular/router";
-import { AuthResponse } from "src/app/models/Auth.Model";
+import { AuthResponse } from "src/app/models/auth.model";
 import { AuthService } from "src/app/services/auth.service";
 
 const matModules = [
