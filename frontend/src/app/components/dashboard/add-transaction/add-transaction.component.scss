@@ -1,0 +1,27 @@
+h2{
+    text-align: center;
+}
+.add-transaction{
+    display: flex;
+    flex-direction: column;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.box > mat-form-field{
+    width: 30%;
+}
+.single-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+mat-form-field:last-of-type{
+    width: 60%;
+}
+button{
+    width: 60%;
+}

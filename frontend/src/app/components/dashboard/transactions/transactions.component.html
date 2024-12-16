@@ -1,1 +1,16 @@
-<p>transactions works!</p>
+<div class="transactions">
+    <h2>Your Latest Transactions</h2>
+    @if(transactions.length === 0){
+        <div>
+          No transactions available.
+        </div>
+    }
+    @for(transaction of transactions; track transaction._id){
+        <div>
+          <p>
+            <strong>{{ transaction.type }}</strong> - {{ transaction.category }}: {{ transaction.amount }}
+            ({{ transaction.date | date: 'shortDate' }})
+          </p>
+        </div>
+    }
+  </div>
