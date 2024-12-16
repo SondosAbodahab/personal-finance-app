@@ -12,7 +12,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { Router } from "@angular/router";
 import { AuthResponse } from "src/app/models/auth.model";
-import { AuthService } from "src/app/services/auth.service";
+import { AuthService } from "src/app/services/auth/auth.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 
