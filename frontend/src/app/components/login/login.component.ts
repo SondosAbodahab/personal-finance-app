@@ -10,7 +10,7 @@ import {
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { AuthResponse } from "src/app/models/auth.model";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { MatButtonModule } from "@angular/material/button";
@@ -27,7 +27,7 @@ const matModules = [
 @Component({
   selector: "app-login",
   standalone: true,
-  imports: [...matModules, CommonModule, ReactiveFormsModule],
+  imports: [...matModules, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: "./login.component.html",
   styleUrl: "./login.component.scss",
 })
