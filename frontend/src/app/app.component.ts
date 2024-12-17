@@ -3,6 +3,7 @@ import { IncomeExpenseComponentComponent } from './components/income-expense-com
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,5 @@ import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 })
 export class AppComponent {
   title = 'Personal Finance App';
+  constructor(public authService:AuthService){}
 }

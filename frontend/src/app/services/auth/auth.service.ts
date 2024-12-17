@@ -1,22 +1,65 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuthResponse } from '../../models/auth.model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable, computed, signal } from "@angular/core";
+import { Observable, catchError, of, tap } from "rxjs";
+import { AuthResponse } from "../../models/auth.model";
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
-    private baseUrl = 'http://localhost:5500/api/auth';
+  private baseUrl = "http://localhost:5500/api/auth";
+  private tokenKey = 'token';
+  isAuthenticated = signal(false);
 
-  constructor(public http:HttpClient) {}
-
-  login(data: any):Observable<AuthResponse>  {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, data);
+ 
+  constructor(public http: HttpClient, public router:Router) {
+   
+    this.initializeAuthState();
   }
+
+  private initializeAuthState() {
+    const token = localStorage.getItem(this.tokenKey);
+    if (token) {
+      const decodedToken: any = this.decodeToken(token);
+      if (decodedToken.exp > Date.now() / 1000) {
+        this.isAuthenticated.set(true);
+      } else {
+        this.logout();
+      }
+    }
+  }
+
+  login(credentials: { email: string; password: string }) {
+    return this.http.post<{ token: string }>(`${this.baseUrl}/login`, credentials).pipe(
+      tap((response) => {
+        localStorage.setItem(this.tokenKey, response.token);
+        this.initializeAuthState();
+        this.router.navigate(['/dashboard']);
+      }),
+      catchError((error) => {
+        console.error('Login failed', error);
+        return of(null);
+      })
+    );
+  }
+
 
   register(data: any) {
     return this.http.post(`${this.baseUrl}/register`, data);
   }
 
+  logout() {
+    localStorage.removeItem(this.tokenKey);
+    this.isAuthenticated.set(false);
+    this.router.navigate(['/login']);
+  }
+
+  private decodeToken(token: string): any {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      return null;
+    }
+  }
 }

@@ -38,6 +38,7 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {
+    this.authService.logout()
     this.loginForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
@@ -46,11 +47,9 @@ export class LoginComponent {
   submit() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
-        next: (response: AuthResponse) => {
-          localStorage.setItem("token", response.token);
+        next: (response:any) => {
           this.router.navigate(["/dashboard"]);
-        },
-        error: (error) => console.error("Login failed", error),
+        }
       });
     }
   }
