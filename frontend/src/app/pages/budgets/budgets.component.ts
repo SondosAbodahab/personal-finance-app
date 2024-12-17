@@ -44,7 +44,6 @@ export class BudgetsComponent implements OnInit {
   getBudget(){
     this.budgetService.getBudget().subscribe((res) => {
           this.currentBudget = res[0];
-          console.log(this.currentBudget);
           this.budgetForm.patchValue(this.currentBudget);
         });
   }
