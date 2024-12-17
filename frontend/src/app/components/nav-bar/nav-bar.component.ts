@@ -3,6 +3,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterModule } from "@angular/router";
+import { AuthService } from "../../services/auth/auth.service";
 
 @Component({
   selector: "app-nav-bar",
@@ -11,4 +12,10 @@ import { RouterModule } from "@angular/router";
   templateUrl: "./nav-bar.component.html",
   styleUrl: "./nav-bar.component.scss",
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+  constructor(public authService: AuthService) {}
+  
+  logout(){
+    this.authService.logout()
+  }
+}

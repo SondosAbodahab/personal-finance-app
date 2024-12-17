@@ -20,15 +20,13 @@
         <mat-icon>favorite</mat-icon>
       </button>
       <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-      >
-        <mat-icon>share</mat-icon>
-      </button>
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
     </div>
   </nav>
-  <!-- <mat-toolbar-row>
-        <span>Custom Toolbar</span>
-      </mat-toolbar-row> -->
 </mat-toolbar>
