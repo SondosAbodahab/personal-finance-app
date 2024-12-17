@@ -2,10 +2,10 @@ const Budget = require("../models/budget");
 
 exports.createBudget = async (req, res) => {
   const { amount, startDate, endDate } = req.body;
-  //   const userId = req.userId | '5c8a1dfa2f8fb814b56fa18';
+  const userId = req.userId;
 
   try {
-    const budget = new Budget({ amount, startDate, endDate });
+    const budget = new Budget({ userId, amount, startDate, endDate });
     await budget.save();
     res.status(201).json({ message: "Budget created successfully", budget });
   } catch (error) {
@@ -15,11 +15,9 @@ exports.createBudget = async (req, res) => {
 };
 
 exports.getBudget = async (req, res) => {
-  // const userId = req.userId ;
-
+  const userId = req.userId;
   try {
-    // const budget = await Budget.findOne({ userId });
-    const budget = await Budget.find();
+    const budget = await Budget.findOne({ userId });
     if (!budget) {
       return res.status(404).json({ message: "Budget not found" });
     }

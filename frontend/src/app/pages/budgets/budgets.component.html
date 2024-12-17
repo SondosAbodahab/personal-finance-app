@@ -1,6 +1,6 @@
 <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
   <div class="budget-container">
-    <h2>{{ currentBudget ? "Your Current Budget" : "Add Your Budget" }}</h2>
+    <h2>{{ hasBudget() ? "Your Current Budget" : "Add Your Budget" }}</h2>
     <mat-form-field appearance="fill">
       <mat-label>Amount</mat-label>
       <input matInput formControlName="amount" type="number" />
@@ -31,7 +31,13 @@
     </mat-form-field>
 
     <button mat-flat-button type="submit">
-      {{ currentBudget ? "Update Budget" : "Create Budget" }}
+      {{ hasBudget() ? "Update Budget" : "Create Budget" }}
     </button>
+
+    @if(statusMessage()){
+      <div class="success-message" [ngClass]="{ visible: statusMessage(), hidden: !statusMessage() }">
+        {{ statusMessage() }}
+      </div>
+    }
   </div>
 </form>

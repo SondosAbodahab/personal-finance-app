@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,7 +27,9 @@ import { Budget } from 'src/app/models/budget.model';
 })
 export class BudgetsComponent implements OnInit {
   budgetForm: FormGroup;
-  currentBudget!: Budget ;
+  currentBudget = signal<Budget | null>(null);
+  hasBudget = computed(() => !!this.currentBudget());
+  statusMessage = signal<string | null>(null);
 
   constructor(private budgetService:BudgetService, private fb:FormBuilder) {
     this.budgetForm = this.fb.group({
@@ -42,21 +44,34 @@ export class BudgetsComponent implements OnInit {
   }
 
   getBudget(){
-    this.budgetService.getBudget().subscribe((res) => {
-          this.currentBudget = res[0];
-          this.budgetForm.patchValue(this.currentBudget);
+    this.budgetService.getBudget().subscribe((res) => {     
+          this.currentBudget.set(res); 
+          this.budgetForm.patchValue(res);
         });
   }
 
   onSubmit() {
-    if (this.currentBudget) {
-      this.budgetService.updateBudget(this.currentBudget._id,this.budgetForm.value).subscribe((res) => {
-        this.currentBudget = res.budget
+    if (this.hasBudget()) {
+      this.budgetService.updateBudget(this.currentBudget()!._id,this.budgetForm.value).subscribe((res) => {
+        this.currentBudget.set(res);
+        this.statusMessage.set('Budget updated successfully!');
+        this.clearMessageAfterDelay();
       });
     } else {
       this.budgetService.createBudget(this.budgetForm.value).subscribe((res) => {
-        this.currentBudget = res.budget        
+        this.currentBudget.set(res);
+        this.statusMessage.set('Budget created successfully!');
+        this.clearMessageAfterDelay();
       });
     }
   }
+
+
+  clearMessageAfterDelay() {
+    setTimeout(() => {
+      this.statusMessage.set(null);
+    }, 3000); // Clear the message after 3 seconds
+  }
+
+
 }

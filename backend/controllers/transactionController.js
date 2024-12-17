@@ -3,7 +3,7 @@ const Transaction = require('../models/Transaction');
 
 exports.addTransaction = async (req, res) => {
   try {
-    const transaction = new Transaction(req.body);
+    const transaction = new Transaction({ ...req.body, userId: req.userId });
     await transaction.save();
     res.status(201).json(transaction);
   } catch (error) {
@@ -13,9 +13,13 @@ exports.addTransaction = async (req, res) => {
 
 
 exports.getTransactions = async (req, res) => {
+  const userId = req.userId ;
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find({ userId });
     res.status(200).json(transactions);
+    if (!transactions || transactions.length === 0) {
+      return res.status(404).json({ message: 'No transactions found' });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -23,8 +27,10 @@ exports.getTransactions = async (req, res) => {
 
 
 exports.updateTransaction = async (req, res) => {
+  const userId = req.userId ;
   try {
     const transaction = await Transaction.findByIdAndUpdate(
+      { userId },
       req.params.id,
       req.body,
       { new: true, runValidators: true }
