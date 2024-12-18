@@ -1,15 +1,23 @@
-.transactions{
-    margin: 30px 200px ;
+.transactions {
+  display: flex;
+  justify-content: center;
+  .transactions-content {
+    width: 80%;
+  }
 }
-table{
-    padding: 30px;
-    padding-bottom: 0;
-    border-radius: 20px 20px 0 0 !important;
+table {
+  padding: 30px;
+  padding-bottom: 0;
+  border-radius: 20px 20px 0 0 !important;
 }
-h2{
-    text-align: center;
+h2 {
+  text-align: center;
 }
-.paginator{
-    margin-bottom: 200px;
-    border-radius: 0 0 20px 20px !important;
+.paginator {
+  border-radius: 0 0 20px 20px !important;
 }
+// @media only screen and (max-width: 768px) {
+//   .transactions-content {
+//     width: 100%;
+//   }
+// }

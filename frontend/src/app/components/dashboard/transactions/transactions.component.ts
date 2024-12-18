@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, Pipe, ViewChild } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import { Transaction } from "src/app/models/transaction.model";
 import { CurrencyPipe, DatePipe } from "@angular/common";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";

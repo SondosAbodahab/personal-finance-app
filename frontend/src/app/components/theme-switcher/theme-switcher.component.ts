@@ -12,12 +12,12 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
   styleUrl: './theme-switcher.component.scss'
 })
 export class ThemeSwitcherComponent {
+  
   constructor(private themeService: ThemeService){
   }
 
-  switchTheme(theme: string) {
-    this.themeService.setTheme(theme);
-    this.themeService.removeOtherThemes(theme);
+  switchTheme(){
+    this.themeService.switchTheme()
   }
 
 }
