@@ -1,0 +1,13 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  class="switcher-icon"
+>
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <div class="menu-content">
+        <button (click)="switchTheme('light-theme')">Light Theme</button>
+        <button (click)="switchTheme('dark-theme')">Dark Theme</button>
+    </div>
+</mat-menu>
