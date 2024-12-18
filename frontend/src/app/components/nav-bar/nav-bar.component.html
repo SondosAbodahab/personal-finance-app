@@ -4,14 +4,22 @@
     </button> -->
   <nav class="navbar">
     <p>My App</p>
+    @if(this.authService.isAuthenticated()){
     <ul>
       <li>
         <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </li>
-      <li><a routerLink="/transactions" routerLinkActive="active">Transaction</a></li>
+      <li>
+        <a routerLink="/transactions" routerLinkActive="active">Transaction</a>
+      </li>
       <li><a routerLink="/budgets" routerLinkActive="active">Budgets</a></li>
+      <li>
+        <a routerLink="/reports" routerLinkActive="active">Reports</a>
+      </li>
     </ul>
+    }
     <div class="user">
+      @if(this.authService.isAuthenticated()){
       <button
         mat-icon-button
         class="example-icon favorite-icon"
@@ -20,13 +28,15 @@
         <mat-icon>favorite</mat-icon>
       </button>
       <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-      (click)="logout()"
-    >
-      <mat-icon>logout</mat-icon>
-    </button>
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        (click)="logout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+      }
+      <app-theme-switcher class="switcher"></app-theme-switcher>
     </div>
   </nav>
 </mat-toolbar>

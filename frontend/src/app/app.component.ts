@@ -10,18 +10,13 @@ import { ThemeSwitcherComponent } from "./components/theme-switcher/theme-switch
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule, NavBarComponent, NavBarComponent, MatCardModule, ThemeSwitcherComponent],
+  imports: [CommonModule, RouterModule, NavBarComponent, NavBarComponent, MatCardModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Personal Finance App';
   
-  constructor(public authService:AuthService,private themeService: ThemeService){
-  }
-
-  switchTheme(theme: string) {
-    this.themeService.setTheme(theme);
-    this.themeService.removeOtherThemes(theme);
+  constructor(public authService:AuthService,){
   }
 }
