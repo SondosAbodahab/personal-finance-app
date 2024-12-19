@@ -4,11 +4,12 @@ import { CurrencyPipe, DatePipe } from "@angular/common";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { TransactionService } from "../../../services/transactions/transaction.service";
+import {MatTableResponsiveModule} from "../../../shared/matTableResponsive/mat-table-responsive.module"
 
 @Component({
   selector: "app-transactions",
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, CurrencyPipe, DatePipe],
+  imports: [MatTableModule, MatPaginatorModule, CurrencyPipe, DatePipe, MatTableResponsiveModule],
   templateUrl: "./transactions.component.html",
   styleUrl: "./transactions.component.scss",
 })
