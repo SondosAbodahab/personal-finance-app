@@ -31,11 +31,11 @@ export class AuthService {
   }
 
   login(credentials: { email: string; password: string }) {
-    return this.http.post<{ token: string }>(`${this.baseUrl}/login`, credentials).pipe(
-      tap((response) => {
+    console.log(credentials);
+    return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
+      tap((response:any) => {  
         localStorage.setItem(this.tokenKey, response.token);
         this.initializeAuthState();
-        this.router.navigate(['/dashboard']);
       }),
       catchError((error) => {
         console.error('Login failed', error);
@@ -46,7 +46,16 @@ export class AuthService {
 
 
   register(data: any) {
-    return this.http.post(`${this.baseUrl}/register`, data);
+    return this.http.post(`${this.baseUrl}/register`, data).pipe(
+      tap((response:any) => {  
+        localStorage.setItem(this.tokenKey, response.token);
+        this.initializeAuthState();
+      }),
+      catchError((error) => {
+        console.error('register failed', error);
+        return of(null);
+      })
+    );
   }
 
   logout() {

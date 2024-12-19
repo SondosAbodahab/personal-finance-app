@@ -23,14 +23,19 @@ const matModules = [
 @Component({
   selector: "app-register",
   standalone: true,
-  imports: [...matModules, CommonModule, ReactiveFormsModule,RouterModule],
+  imports: [...matModules, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  errorMessage: string = "";
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router:Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.registerForm = this.fb.group(
       {
         userName: ["", [Validators.required]],
@@ -52,9 +57,16 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(["/dashboard"]);
         },
-        error: (error) => console.error("Login failed", error),
+        error: (error) => {
+          if (error.status === 400) {
+            const email = this.registerForm.get("email");
+            email?.setErrors({ "duplicate email": error.error.error });
+          } else {
+            console.error("Registration failed:", error);
+          }
+        },
       });
     }
   }

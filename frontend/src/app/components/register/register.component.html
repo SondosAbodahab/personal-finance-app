@@ -20,6 +20,9 @@
         <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
           Please enter a valid email.
         </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('duplicate email')">
+          Email is already in use
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">

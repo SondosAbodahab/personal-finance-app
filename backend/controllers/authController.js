@@ -11,9 +11,14 @@ exports.register = async (req, res) => {
       email,
       password: hashedPassword,
     });
-
-    res.status(201).json({ message: "User registered successfully" });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.status(201).json({ message: "User registered successfully", token });
   } catch (error) {
+    if (error.code === 11000) { 
+      return res.status(400).json({ error: 'Email is already in use' });
+    }
     res.status(500).json({ error: error.message });
   }
 };
@@ -30,7 +35,7 @@ exports.login = async (req, res) => {
     });
     res.json({
       message: "Login successful",
-      token,
+      token
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
