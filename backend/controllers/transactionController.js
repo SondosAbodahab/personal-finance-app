@@ -16,10 +16,10 @@ exports.getTransactions = async (req, res) => {
   const userId = req.userId ;
   try {
     const transactions = await Transaction.find({ userId });
-    res.status(200).json(transactions);
     if (!transactions || transactions.length === 0) {
-      return res.status(404).json({ message: 'No transactions found' });
+      return res.status(200).json({ message: 'No transactions found' });
     }
+    res.status(200).json(transactions);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

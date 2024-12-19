@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
-import { BudgetsComponent } from './pages/budgets/budgets.component';
+import { BudgetsComponent } from './components/budgets/budgets.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
