@@ -10,7 +10,7 @@ import { ThemeSwitcherComponent } from "../theme-switcher/theme-switcher.compone
 @Component({
   selector: "app-nav-bar",
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterModule , ThemeSwitcherComponent],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterModule , ThemeSwitcherComponent,],
   templateUrl: "./nav-bar.component.html",
   styleUrl: "./nav-bar.component.scss",
 })

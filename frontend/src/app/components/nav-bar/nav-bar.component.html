@@ -1,42 +1,50 @@
 <mat-toolbar>
-  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button> -->
   <nav class="navbar">
+    <input type="checkbox" id="check" />
     <p>Coin Keeper</p>
-    @if(this.authService.isAuthenticated()){
-    <ul>
-      <li>
-        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      </li>
-      <li>
-        <a routerLink="/transactions" routerLinkActive="active">Transaction</a>
-      </li>
-      <li><a routerLink="/budgets" routerLinkActive="active">Budgets</a></li>
-      <li>
-        <a routerLink="/reports" routerLinkActive="active">Reports</a>
-      </li>
-    </ul>
-    }
-    <div class="user">
+    <div class="menu-item">
       @if(this.authService.isAuthenticated()){
-      <button
-        mat-icon-button
-        class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-        (click)="logout()"
-      >
-        <mat-icon>logout</mat-icon>
-      </button>
+        <ul>
+          <li>
+            <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+          </li>
+          <li>
+            <a routerLink="/transactions" routerLinkActive="active">Transaction</a>
+          </li>
+          <li><a routerLink="/budgets" routerLinkActive="active">Budgets</a></li>
+          <li>
+            <a routerLink="/reports" routerLinkActive="active">Reports</a>
+          </li>
+        </ul>
       }
-      <app-theme-switcher class="switcher"></app-theme-switcher>
+      <div class="user">
+        @if(this.authService.isAuthenticated()){
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with share icon"
+          (click)="logout()"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+        }
+        <app-theme-switcher class="switcher"></app-theme-switcher>
+      </div>
     </div>
+    <!-- mobile screen -->
+    @if(this.authService.isAuthenticated()){
+    <div class="menu-btn">
+      <label for="check">
+        <mat-icon>menu</mat-icon>
+      </label>
+    </div>
+    }
   </nav>
 </mat-toolbar>
