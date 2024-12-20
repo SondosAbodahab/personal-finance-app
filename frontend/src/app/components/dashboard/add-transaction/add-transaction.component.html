@@ -16,6 +16,9 @@
       <mat-form-field appearance="fill">
         <mat-label>Amount</mat-label>
         <input matInput type="number" formControlName="amount" />
+        @if (transactionForm.get('amount')?.hasError('required')) {
+          <mat-error>amount is required</mat-error>
+        }
         @if (transactionForm.get('amount')?.hasError('pattern')) {
           <mat-error>Amount must be a positive number</mat-error>
         }

@@ -46,5 +46,12 @@ a {
   text-decoration: none; 
   cursor: pointer;
 }
-// @import './example/mat-table-responsive/mat-table-responsive.directive';
+
 @import './app/shared/matTableResponsive/mat-table-responsive.directive.scss';
+
+@media only screen and (max-width: 600px) {
+  .mat-mdc-form-field-infix{
+    width: 100px !important;
+  }
+}
+

@@ -1,6 +1,7 @@
 .transactions {
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
   .transactions-content {
     width: 80%;
   }
@@ -13,12 +14,14 @@ table {
 h2 {
   text-align: center;
   margin: 24px;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 .paginator {
   border-radius: 0 0 20px 20px !important;
 }
-@media only screen and (max-width: 768px) {
-  table {
-    max-width: 100%;
-  }
-}
+// @media only screen and (max-width: 768px) {
+//   table {
+//     max-width: 100%;
+//   }
+// }
