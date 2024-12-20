@@ -9,9 +9,10 @@ Features
   - Budgeting: Users can set and update their budget.
   - Theming: Light and dark themes with easy switching.
   - Responsive UI: Built with Angular Material for a clean and modern user interface.
+  - Report: Users can see reports and Insights about there spendind
 
 Tech Stack
-  - Frontend: Angular 18, Angular Material
+  - Frontend: Angular 18, Angular Material, chart.js
   - Backend: Node.js, Express.js, MongoDB
   - Authentication: JWT (JSON Web Tokens)
   - Styling: SCSS, Angular Material
