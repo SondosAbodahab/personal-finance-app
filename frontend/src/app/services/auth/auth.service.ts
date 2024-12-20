@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, computed, signal } from "@angular/core";
-import { Observable, catchError, of, tap } from "rxjs";
-import { AuthResponse } from "../../models/auth.model";
+import { Injectable, signal } from "@angular/core";
+import { catchError, of, tap } from "rxjs";
+
 import { Router } from '@angular/router';
 
 @Injectable({
