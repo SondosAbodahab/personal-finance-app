@@ -12,8 +12,8 @@ dotenv.config();
 connectDB();
 
 const allowedOrigins = [
-  "http://localhost:4200", // Localhost for development
-  "https://personal-finance-app-jatp.onrender.com", // Your deployed frontend URL
+  "http://localhost:4200",
+  "https://personal-finance-app-jatp.onrender.com", 
 ];
 
 const app = express();
