@@ -9,7 +9,7 @@ Features
   - Budgeting: Users can set and update their budget.
   - Theming: Light and dark themes with easy switching.
   - Responsive UI: Built with Angular Material for a clean and modern user interface.
-  - Report: Users can see reports and Insights about there spendind
+  - Report: Users can see reports and Insights about their spending
 
 Tech Stack
   - Frontend: Angular 18, Angular Material, chart.js
