@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Budget } from '../../models/budget.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BudgetService {
-  private baseUrl = 'http://localhost:5500/api/budget';
+  private baseUrl = `${environment.backendUrl}/budget`;
 
   constructor(private http: HttpClient) {}
 

@@ -3,12 +3,14 @@ import { Injectable, signal } from "@angular/core";
 import { catchError, of, tap } from "rxjs";
 
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  private baseUrl = "http://localhost:5500/api/auth";
+  private baseUrl = environment.backendUrl;
+  
   private tokenKey = 'token';
   isAuthenticated = signal(false);
 
@@ -31,7 +33,7 @@ export class AuthService {
   }
 
   login(credentials: { email: string; password: string }) {
-    return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
+    return this.http.post(`${this.baseUrl}/auth/login`, credentials).pipe(
       tap((response:any) => {  
         localStorage.setItem(this.tokenKey, response.token);
         this.initializeAuthState();
@@ -45,7 +47,7 @@ export class AuthService {
 
 
   register(data: any) {
-    return this.http.post(`${this.baseUrl}/register`, data).pipe(
+    return this.http.post(`${this.baseUrl}/auth/register`, data).pipe(
       tap((response:any) => {  
         localStorage.setItem(this.tokenKey, response.token);
         this.initializeAuthState();
