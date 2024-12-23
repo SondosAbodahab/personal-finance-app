@@ -35,7 +35,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
+app.get('/', (req, res) => {
+  res.send("Hello World!");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/transactions", verifyToken, transactionRoutes);
 app.use("/api/budget", verifyToken, budgetRoutes);
