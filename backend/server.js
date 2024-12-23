@@ -14,6 +14,7 @@ connectDB();
 const allowedOrigins = [
   "http://localhost:4200",
   "https://personal-finance-app-jatp.onrender.com", 
+   "https://personal-finance-app-seven-blue.vercel.app"
 ];
 
 const app = express();
@@ -31,10 +32,12 @@ app.use(
         callback(new Error("Not allowed by CORS")); // Block the origin
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
 
 // test route
 app.get('/', (req, res) => {
