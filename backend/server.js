@@ -35,9 +35,17 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// test routes
 app.get('/', (req, res) => {
   res.send("Hello World!");
 });
+
+app.get('*', (req, res) => {
+  res.status(404).send('Route not found');
+});
+// end of test routes
+
 app.use("/api/auth", authRoutes);
 app.use("/api/transactions", verifyToken, transactionRoutes);
 app.use("/api/budget", verifyToken, budgetRoutes);
