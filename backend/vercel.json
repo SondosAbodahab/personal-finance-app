@@ -7,10 +7,9 @@
     }
   ],
   "routes": [
-    { "src": "/api/auth(.*)", "dest": "server.js" },
-    { "src": "/api/transactions(.*)", "dest": "server.js" },
-    { "src": "/api/budget(.*)", "dest": "server.js" },
-    { "src": "/api/reports(.*)", "dest": "server.js" },
-    { "src": "/(.*)", "dest": "server.js" }
+     {
+        "src": "/(.*)",
+        "dest": "server.js"
+      }
   ]
 }

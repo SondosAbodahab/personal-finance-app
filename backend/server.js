@@ -48,8 +48,9 @@ app.use("/api/budget", verifyToken, budgetRoutes);
 app.use("/api/reports", reportsRoutes);
 
 // test route
-app.get('*', (req, res) => {
-  res.status(404).send('Route not found');
+app.use("*", (req, res) => {
+  console.log(`Unhandled request: ${req.method} ${req.originalUrl}`);
+  res.status(404).send(`Unhandled request: ${req.method} ${req.originalUrl}`);
 });
 
 const PORT = process.env.PORT || 3000;
