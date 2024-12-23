@@ -2,7 +2,7 @@
   <nav class="navbar">
     <input type="checkbox" id="check" />
     <p>Coin Keeper</p>
-    <div class="menu-item">
+    <div [ngClass]="{'menu-item': this.authService.isAuthenticated()}">
       @if(this.authService.isAuthenticated()){
         <ul>
           <li>
