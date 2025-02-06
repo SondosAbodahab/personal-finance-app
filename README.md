@@ -2,6 +2,7 @@
 
 A simple yet powerful Personal Finance App built with Angular 18, Node.js, and Angular Material. The app allows users to manage their transactions,
 set budgets, view their financial data.
+live demo: https://personal-finance-app-jatp.onrender.com/login
 
 Features
   - Authentication & Authorization: Login and Registration features with token-based authentication.
